@@ -11,7 +11,6 @@ local SCRIPTS = {
     ["Murder Mystery 2"] = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qatiloynu.lua",
 }
 
--- Rayfield versiyonları (South Bronx için ayrı)
 local SCRIPTS_RAYFIELD = {
     ["South Bronx"]      = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qarslmaolmyansb_rayfield.lua",
     ["Elite War"]        = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qarslmaoynu.lua",
@@ -54,14 +53,12 @@ sg.ResetOnSpawn = false
 sg.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 sg.Parent = lp.PlayerGui
 
--- Background
 local bg = Instance.new("Frame")
 bg.Size = UDim2.new(1, 0, 1, 0)
 bg.BackgroundColor3 = Color3.fromRGB(8, 4, 4)
 bg.BackgroundTransparency = 0.2
 bg.Parent = sg
 
--- Decorative dots
 for i = 1, 8 do
     local dot = Instance.new("Frame")
     dot.Size = UDim2.new(0, math.random(3,8), 0, math.random(3,8))
@@ -73,7 +70,6 @@ for i = 1, 8 do
     Instance.new("UICorner", dot).CornerRadius = UDim.new(1, 0)
 end
 
--- Main frame
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 580, 0, 340)
 frame.Position = UDim2.new(0.5, -290, 2, 0)
@@ -87,7 +83,6 @@ frameStroke.Color = Color3.fromRGB(160, 0, 0)
 frameStroke.Thickness = 1.5
 frameStroke.Parent = frame
 
--- Top bar
 local topBar = Instance.new("Frame")
 topBar.Size = UDim2.new(1, 0, 0, 52)
 topBar.BackgroundColor3 = Color3.fromRGB(130, 0, 0)
@@ -136,7 +131,7 @@ closeBtn.MouseButton1Click:Connect(function()
 end)
 
 -- ==========================================
--- GUI SEÇİMİ — RAYFIELD / FLUENT
+-- GUI SEÇİMİ
 -- ==========================================
 local guiChoiceFrame = Instance.new("Frame")
 guiChoiceFrame.Size = UDim2.new(1, -20, 0, 60)
@@ -154,7 +149,7 @@ guiLabel.TextXAlignment = Enum.TextXAlignment.Left
 guiLabel.Text = "🎨 Select UI:"
 guiLabel.Parent = guiChoiceFrame
 
-local selectedGUI = "fluent" -- default
+local selectedGUI = "fluent"
 
 local function makeGuiBtn(xPos, name, label)
     local btn = Instance.new("TextButton")
@@ -175,14 +170,12 @@ end
 local rayfieldBtn, rayfieldStroke = makeGuiBtn(0, "rayfield", "Rayfield")
 local fluentBtn, fluentStroke = makeGuiBtn(130, "fluent", "Fluent")
 
--- Fluent default seçili
 fluentBtn.BackgroundColor3 = Color3.fromRGB(100, 10, 10)
 fluentBtn.TextColor3 = Color3.fromRGB(255, 200, 200)
 fluentStroke.Color = Color3.fromRGB(220, 50, 50)
 
 local function selectGUI(name)
     selectedGUI = name
-    -- Rayfield
     if name == "rayfield" then
         rayfieldBtn.BackgroundColor3 = Color3.fromRGB(100, 10, 10)
         rayfieldBtn.TextColor3 = Color3.fromRGB(255, 200, 200)
@@ -364,7 +357,6 @@ statusLbl.Parent = rightPanel
 verifyBtn.MouseEnter:Connect(function() TweenService:Create(verifyBtn,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(230,50,50)}):Play() end)
 verifyBtn.MouseLeave:Connect(function() TweenService:Create(verifyBtn,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(160,0,0)}):Play() end)
 
--- Animate in
 TweenService:Create(frame, TweenInfo.new(0.7, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
     Position = UDim2.new(0.5, -290, 0.5, -170)
 }):Play()
@@ -397,6 +389,8 @@ verifyBtn.MouseButton1Click:Connect(function()
             inputStroke.Color = Color3.fromRGB(0,200,80)
             statusLbl.TextColor3 = Color3.fromRGB(0,220,100)
             statusLbl.Text = "✅ Access granted! Loading "..selectedGame.." ["..selectedGUI:upper().."]..."
+            -- KEY'İ GLOBAL'E KAYDET
+            _G.VIPFF_KEY = key
             TweenService:Create(frame,TweenInfo.new(0.5,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Position=UDim2.new(0.5,-290,-2,0)}):Play()
             TweenService:Create(blur,TweenInfo.new(0.5),{Size=0}):Play()
             task.wait(0.6) blur:Destroy() sg:Destroy() keyValid=true
