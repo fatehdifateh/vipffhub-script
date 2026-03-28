@@ -9,12 +9,14 @@ local SCRIPTS = {
     ["South Bronx"]      = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qarslmaolmyansb.lua",
     ["Elite War"]        = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qarslmaoynu.lua",
     ["Murder Mystery 2"] = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qatiloynu.lua",
+    ["The Bronx 3"]      = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/thbronx3.lua",
 }
 
 local SCRIPTS_RAYFIELD = {
     ["South Bronx"]      = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qarslmaolmyansb_rayfield.lua",
     ["Elite War"]        = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qarslmaoynu.lua",
     ["Murder Mystery 2"] = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qatiloynu.lua",
+    ["The Bronx 3"]      = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/thbronx3.lua",
 }
 
 local KEY_URL = "https://pastebin.com/raw/mm21ris3"
@@ -273,10 +275,12 @@ end
 local sbBtn  = makeGameBtn("South Bronx")
 local ewBtn  = makeGameBtn("Elite War")
 local mm2Btn = makeGameBtn("Murder Mystery 2")
+local tb3Btn = makeGameBtn("The Bronx 3")
 
 sbBtn.MouseButton1Click:Connect(function()  selectGame("South Bronx") end)
 ewBtn.MouseButton1Click:Connect(function()  selectGame("Elite War") end)
 mm2Btn.MouseButton1Click:Connect(function() selectGame("Murder Mystery 2") end)
+tb3Btn.MouseButton1Click:Connect(function() selectGame("The Bronx 3") end)
 
 -- ==========================================
 -- DIVIDER
