@@ -10,6 +10,7 @@ local SCRIPTS = {
     ["Elite War"]        = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qarslmaoynu.lua",
     ["Murder Mystery 2"] = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qatiloynu.lua",
     ["The Bronx 3"]      = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/thbronx3.lua",
+    ["AutoFARM (BETA)"]  = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/AutoFARM (BETA)ryf.lua",
 }
 
 local SCRIPTS_RAYFIELD = {
@@ -17,6 +18,7 @@ local SCRIPTS_RAYFIELD = {
     ["Elite War"]        = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qarslmaoynu.lua",
     ["Murder Mystery 2"] = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/qatiloynu.lua",
     ["The Bronx 3"]      = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/thbronx3.lua",
+    ["AutoFARM (BETA)"]  = "https://raw.githubusercontent.com/fatehdifateh/vipffhub-script/refs/heads/main/AutoFARM (BETA).lua",
 }
 
 local KEY_URL = "https://pastebin.com/raw/mm21ris3"
