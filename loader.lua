@@ -1,4 +1,4 @@
--- ========================================== 
+-- ==========================================
 -- VIP FF HUB | LOADER
 -- ==========================================
 local TweenService = game:GetService("TweenService")
@@ -75,7 +75,7 @@ for i = 1, 8 do
 end
 
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 580, 0, 340)
+frame.Size = UDim2.new(0, 580, 0, 380)
 frame.Position = UDim2.new(0.5, -290, 2, 0)
 frame.BackgroundColor3 = Color3.fromRGB(12, 4, 4)
 frame.BorderSizePixel = 0
@@ -135,7 +135,7 @@ closeBtn.MouseButton1Click:Connect(function()
 end)
 
 -- ==========================================
--- GUI SEÇİMİ
+-- GUI SECIMI
 -- ==========================================
 local guiChoiceFrame = Instance.new("Frame")
 guiChoiceFrame.Size = UDim2.new(1, -20, 0, 60)
@@ -167,12 +167,15 @@ local function makeGuiBtn(xPos, name, label)
     btn.BorderSizePixel = 0
     btn.Parent = guiChoiceFrame
     Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8)
-    local bs = Instance.new("UIStroke") bs.Color = Color3.fromRGB(100, 0, 0) bs.Thickness = 1.5 bs.Parent = btn
+    local bs = Instance.new("UIStroke")
+    bs.Color = Color3.fromRGB(100, 0, 0)
+    bs.Thickness = 1.5
+    bs.Parent = btn
     return btn, bs
 end
 
 local rayfieldBtn, rayfieldStroke = makeGuiBtn(0, "rayfield", "Rayfield")
-local fluentBtn, fluentStroke = makeGuiBtn(130, "fluent", "Fluent")
+local fluentBtn, fluentStroke     = makeGuiBtn(130, "fluent", "Fluent")
 
 fluentBtn.BackgroundColor3 = Color3.fromRGB(100, 10, 10)
 fluentBtn.TextColor3 = Color3.fromRGB(255, 200, 200)
@@ -201,7 +204,7 @@ rayfieldBtn.MouseButton1Click:Connect(function() selectGUI("rayfield") end)
 fluentBtn.MouseButton1Click:Connect(function() selectGUI("fluent") end)
 
 -- ==========================================
--- SOL: GAME SEÇİMİ
+-- SOL: GAME SECIMI
 -- ==========================================
 local leftPanel = Instance.new("Frame")
 leftPanel.Size = UDim2.new(0, 220, 1, -128)
@@ -252,9 +255,20 @@ local function makeGameBtn(name)
     btn.BorderSizePixel = 0
     btn.Parent = gameScroll
     Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10)
-    local bs = Instance.new("UIStroke") bs.Color = Color3.fromRGB(100, 0, 0) bs.Thickness = 1.5 bs.Parent = btn
-    btn.MouseEnter:Connect(function() if selectedGame~=name then TweenService:Create(btn,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(50,12,12)}):Play() end end)
-    btn.MouseLeave:Connect(function() if selectedGame~=name then TweenService:Create(btn,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(30,8,8)}):Play() end end)
+    local bs = Instance.new("UIStroke")
+    bs.Color = Color3.fromRGB(100, 0, 0)
+    bs.Thickness = 1.5
+    bs.Parent = btn
+    btn.MouseEnter:Connect(function()
+        if selectedGame ~= name then
+            TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3=Color3.fromRGB(50,12,12)}):Play()
+        end
+    end)
+    btn.MouseLeave:Connect(function()
+        if selectedGame ~= name then
+            TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3=Color3.fromRGB(30,8,8)}):Play()
+        end
+    end)
     table.insert(allGameBtns, {btn=btn, stroke=bs, name=name})
     return btn
 end
@@ -264,25 +278,28 @@ local function selectGame(name)
     for _, data in pairs(allGameBtns) do
         if data.name == name then
             TweenService:Create(data.stroke, TweenInfo.new(0.15), {Color=Color3.fromRGB(220,50,50)}):Play()
-            TweenService:Create(data.btn, TweenInfo.new(0.15), {BackgroundColor3=Color3.fromRGB(100,10,10)}):Play()
-            data.btn.TextColor3 = Color3.fromRGB(255,200,200)
+            TweenService:Create(data.btn,    TweenInfo.new(0.15), {BackgroundColor3=Color3.fromRGB(100,10,10)}):Play()
+            data.btn.TextColor3 = Color3.fromRGB(255, 200, 200)
         else
             TweenService:Create(data.stroke, TweenInfo.new(0.15), {Color=Color3.fromRGB(100,0,0)}):Play()
-            TweenService:Create(data.btn, TweenInfo.new(0.15), {BackgroundColor3=Color3.fromRGB(30,8,8)}):Play()
-            data.btn.TextColor3 = Color3.fromRGB(200,160,160)
+            TweenService:Create(data.btn,    TweenInfo.new(0.15), {BackgroundColor3=Color3.fromRGB(30,8,8)}):Play()
+            data.btn.TextColor3 = Color3.fromRGB(200, 160, 160)
         end
     end
 end
 
-local sbBtn  = makeGameBtn("South Bronx")
-local ewBtn  = makeGameBtn("Elite War")
-local mm2Btn = makeGameBtn("Murder Mystery 2")
-local tb3Btn = makeGameBtn("The Bronx 3")
+-- Tum game butonlari
+local sbBtn     = makeGameBtn("South Bronx")
+local ewBtn     = makeGameBtn("Elite War")
+local mm2Btn    = makeGameBtn("Murder Mystery 2")
+local tb3Btn    = makeGameBtn("The Bronx 3")
+local autoBtn   = makeGameBtn("AutoFARM (BETA)")
 
-sbBtn.MouseButton1Click:Connect(function()  selectGame("South Bronx") end)
-ewBtn.MouseButton1Click:Connect(function()  selectGame("Elite War") end)
-mm2Btn.MouseButton1Click:Connect(function() selectGame("Murder Mystery 2") end)
-tb3Btn.MouseButton1Click:Connect(function() selectGame("The Bronx 3") end)
+sbBtn.MouseButton1Click:Connect(function()   selectGame("South Bronx") end)
+ewBtn.MouseButton1Click:Connect(function()   selectGame("Elite War") end)
+mm2Btn.MouseButton1Click:Connect(function()  selectGame("Murder Mystery 2") end)
+tb3Btn.MouseButton1Click:Connect(function()  selectGame("The Bronx 3") end)
+autoBtn.MouseButton1Click:Connect(function() selectGame("AutoFARM (BETA)") end)
 
 -- ==========================================
 -- DIVIDER
@@ -296,7 +313,7 @@ divider.BorderSizePixel = 0
 divider.Parent = frame
 
 -- ==========================================
--- SAĞ: KEY SİSTEMİ
+-- SAG: KEY SISTEMI
 -- ==========================================
 local rightPanel = Instance.new("Frame")
 rightPanel.Size = UDim2.new(0, 310, 1, -128)
@@ -345,7 +362,10 @@ verifyBtn.BorderSizePixel = 0
 verifyBtn.Parent = rightPanel
 Instance.new("UICorner", verifyBtn).CornerRadius = UDim.new(0, 10)
 local btnGrad = Instance.new("UIGradient")
-btnGrad.Color = ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(210,40,40)),ColorSequenceKeypoint.new(1,Color3.fromRGB(120,0,0))})
+btnGrad.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(210,40,40)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(120,0,0))
+})
 btnGrad.Rotation = 90
 btnGrad.Parent = verifyBtn
 
@@ -360,11 +380,15 @@ statusLbl.TextWrapped = true
 statusLbl.Text = "© VIP FF HUB - All rights reserved"
 statusLbl.Parent = rightPanel
 
-verifyBtn.MouseEnter:Connect(function() TweenService:Create(verifyBtn,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(230,50,50)}):Play() end)
-verifyBtn.MouseLeave:Connect(function() TweenService:Create(verifyBtn,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(160,0,0)}):Play() end)
+verifyBtn.MouseEnter:Connect(function()
+    TweenService:Create(verifyBtn, TweenInfo.new(0.15), {BackgroundColor3=Color3.fromRGB(230,50,50)}):Play()
+end)
+verifyBtn.MouseLeave:Connect(function()
+    TweenService:Create(verifyBtn, TweenInfo.new(0.15), {BackgroundColor3=Color3.fromRGB(160,0,0)}):Play()
+end)
 
 TweenService:Create(frame, TweenInfo.new(0.7, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-    Position = UDim2.new(0.5, -290, 0.5, -170)
+    Position = UDim2.new(0.5, -290, 0.5, -190)
 }):Play()
 
 -- ==========================================
@@ -374,43 +398,49 @@ local keyValid = false
 
 verifyBtn.MouseButton1Click:Connect(function()
     if not selectedGame then
-        statusLbl.TextColor3 = Color3.fromRGB(255,150,0)
+        statusLbl.TextColor3 = Color3.fromRGB(255, 150, 0)
         statusLbl.Text = "⚠️ Please select a game first!"
         return
     end
     local key = input.Text
     if key == "" then
-        statusLbl.TextColor3 = Color3.fromRGB(255,150,0)
+        statusLbl.TextColor3 = Color3.fromRGB(255, 150, 0)
         statusLbl.Text = "⚠️ Please enter a key!"
         return
     end
-    statusLbl.TextColor3 = Color3.fromRGB(255,220,0)
+    statusLbl.TextColor3 = Color3.fromRGB(255, 220, 0)
     statusLbl.Text = "🔄 Verifying..."
     verifyBtn.Text = "Checking..."
-    verifyBtn.BackgroundColor3 = Color3.fromRGB(50,15,15)
+    verifyBtn.BackgroundColor3 = Color3.fromRGB(50, 15, 15)
 
     task.spawn(function()
         local valid = checkKey(key)
         if valid then
-            inputStroke.Color = Color3.fromRGB(0,200,80)
-            statusLbl.TextColor3 = Color3.fromRGB(0,220,100)
-            statusLbl.Text = "✅ Access granted! Loading "..selectedGame.." ["..selectedGUI:upper().."]..."
-            -- KEY'İ GLOBAL'E KAYDET
+            inputStroke.Color = Color3.fromRGB(0, 200, 80)
+            statusLbl.TextColor3 = Color3.fromRGB(0, 220, 100)
+            statusLbl.Text = "✅ Access granted! Loading " .. selectedGame .. " [" .. selectedGUI:upper() .. "]..."
             _G.VIPFF_KEY = key
-            TweenService:Create(frame,TweenInfo.new(0.5,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Position=UDim2.new(0.5,-290,-2,0)}):Play()
-            TweenService:Create(blur,TweenInfo.new(0.5),{Size=0}):Play()
-            task.wait(0.6) blur:Destroy() sg:Destroy() keyValid=true
+            TweenService:Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+                Position = UDim2.new(0.5, -290, -2, 0)
+            }):Play()
+            TweenService:Create(blur, TweenInfo.new(0.5), {Size = 0}):Play()
+            task.wait(0.6)
+            blur:Destroy()
+            sg:Destroy()
+            keyValid = true
         else
-            statusLbl.TextColor3 = Color3.fromRGB(255,60,60)
+            statusLbl.TextColor3 = Color3.fromRGB(255, 60, 60)
             statusLbl.Text = "❌ Invalid key!"
-            inputStroke.Color = Color3.fromRGB(220,0,0)
+            inputStroke.Color = Color3.fromRGB(220, 0, 0)
             verifyBtn.Text = "✅  Verify & Load"
-            verifyBtn.BackgroundColor3 = Color3.fromRGB(160,0,0)
-            for i=1,3 do
-                TweenService:Create(frame,TweenInfo.new(0.05),{Position=UDim2.new(0.5,-280,0.5,-170)}):Play() task.wait(0.05)
-                TweenService:Create(frame,TweenInfo.new(0.05),{Position=UDim2.new(0.5,-300,0.5,-170)}):Play() task.wait(0.05)
+            verifyBtn.BackgroundColor3 = Color3.fromRGB(160, 0, 0)
+            for i = 1, 3 do
+                TweenService:Create(frame, TweenInfo.new(0.05), {Position=UDim2.new(0.5,-280,0.5,-190)}):Play()
+                task.wait(0.05)
+                TweenService:Create(frame, TweenInfo.new(0.05), {Position=UDim2.new(0.5,-300,0.5,-190)}):Play()
+                task.wait(0.05)
             end
-            TweenService:Create(frame,TweenInfo.new(0.1),{Position=UDim2.new(0.5,-290,0.5,-170)}):Play()
+            TweenService:Create(frame, TweenInfo.new(0.1), {Position=UDim2.new(0.5,-290,0.5,-190)}):Play()
         end
     end)
 end)
@@ -427,6 +457,6 @@ if url then
         loadstring(game:HttpGet(url))()
     end)
     if not ok then
-        warn("❌ Script failed to load: "..tostring(err))
+        warn("❌ Script failed to load: " .. tostring(err))
     end
 end
